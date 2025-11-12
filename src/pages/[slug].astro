@@ -7,10 +7,14 @@ import PostFooter from "src/components/post-footer.astro";
 import Tags from "src/components/tags.astro";
 import { getCollection } from "astro:content";
 
+import { sanitizeString } from "public/js/util/util";
+
 export async function getStaticPaths() {
   const posts = await getCollection("posts");
   return posts.map((post) => {
-    const slug = post.data.postSlug; // all posts must have a slug or fail
+    // const slug = post.data.postSlug; // all posts must have a slug or fail
+    // deprecated, now slug is autimaticlly assigned
+    const slug = post.data.postSlug || sanitizeString(post.data.title);
 
     return {
       params: { slug },
@@ -53,7 +57,7 @@ import { CONFIG } from "../js/load-config";
     </article-head>
 
     <Content />
-    <PostFooter />
+    <PostFooter allPostTags = {tags}/>
   </article>
   <PrintFooter />
 

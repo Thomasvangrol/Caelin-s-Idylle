@@ -9,18 +9,16 @@ import { defineCollection, z } from 'astro:content';
 
 // 3. Define your collection(s)
 
-const allTags = ['announcement', 'game design', 'community', 'release' ];
-
 const posts = defineCollection({
     type: 'content', // It's good practice to explicitly state the type
     schema: z.object({
-        postSlug: z.string(),
+        postSlug: z.string().optional(),
         isDraft: z.boolean(),
         title: z.string(),
         description: z.string(),
         pubDate: z.date(),
         author: z.string(),
-        tags: z.array(z.enum(allTags)),
+        tags: z.array(z.string()),
         series: z.string().optional(),
     }),
 });

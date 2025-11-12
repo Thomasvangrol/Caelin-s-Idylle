@@ -234,3 +234,10 @@ tr:last-child td {
 }
 
 
+hr {
+    height: 1px;
+    color: var(--color-primary-lighter);
+    background: var(--color-primary-lighter);
+    font-size: 0;
+    border: 0;
+}
