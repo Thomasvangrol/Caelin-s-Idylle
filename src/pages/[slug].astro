@@ -11,11 +11,13 @@ import { sanitizeString } from "public/js/util/util";
 
 export async function getStaticPaths() {
   const posts = await getCollection("posts");
-  return posts.map((post) => {
-    const slug = post.data.postSlug || sanitizeString(post.data.title);
+  console.log("Generated slugs:", posts.map(p => p.slug));
 
+  return posts.map((post) => {
+    // const slug = post.data.postSlug || sanitizeString(post.data.title);
+    // const slug = post.id;
     return {
-      params: { slug },
+      params: { slug: post.slug },
       props: { post },
     };
   });
@@ -23,10 +25,11 @@ export async function getStaticPaths() {
 
 const { post } = Astro.props;
 const { slug } = Astro.params;
-const { title, tags, pubDate, description } = post.data;
+const { title, tags, pubDate, description, cover } = post.data;
+console.log(cover)
 const { Content } = await post.render();
 
-import { CONFIG } from "../js/load-config";
+import { CONFIG } from "@config";
 
 const queryFilters = {
     tags: tags,
