@@ -11,7 +11,6 @@ import { sanitizeString } from "public/js/util/util";
 
 export async function getStaticPaths() {
   const posts = await getCollection("posts");
-  console.log("Generated slugs:", posts.map(p => p.slug));
 
   return posts.map((post) => {
     // const slug = post.data.postSlug || sanitizeString(post.data.title);
@@ -26,7 +25,7 @@ export async function getStaticPaths() {
 const { post } = Astro.props;
 const { slug } = Astro.params;
 const { title, tags, pubDate, description, cover } = post.data;
-console.log(cover)
+console.log("cover", cover)
 const { Content } = await post.render();
 
 import { CONFIG } from "@config";
@@ -38,9 +37,26 @@ const queryFilters = {
 
 
 const heading = "<p class='mt-base strong'>You might also be interested in the following posts</p>";
+
+import { Picture } from "astro:assets";
+
 ---
 
 <Baselayout title={title} description={description} type="article">
+  {post.data.cover && (
+     <Picture
+                                loading={"lazy"}
+                                src={post.data.cover.src}
+                                formats={["avif", "webp"]}
+                                alt={post.data.cover.alt}
+                                width={1280}
+                                height={720}
+                                widths={[240, 540, 720, 1280]}
+                                sizes="(max-width: 360px) 240px, (max-width: 720px) 480px, (max-width: 1600px) 720px"
+                            />
+  )}
+  
+
   <print-head>
     <h1>{CONFIG.TITLE}</h1>
     <h2>{title}</h2>
