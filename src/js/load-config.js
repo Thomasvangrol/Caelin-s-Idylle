@@ -51,7 +51,8 @@ const DEFAULT_CONFIG = {
     AUTHOR: 'John Doe',
     CONTACT: true,
     EMAIL: 'contact@contact.com',
-    THUMBS: false
+    THUMBS: false,
+    HOME_NB_POSTS: 4
 };
 
 const createConfig = (defaultConfig, userConfig) => {

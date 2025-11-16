@@ -7,3 +7,4 @@ CONFIG:
     - CONTACT: true
     - EMAIL: contact@contact.com
     - THUMBS: false
+    - HOME_NB_POSTS: 6

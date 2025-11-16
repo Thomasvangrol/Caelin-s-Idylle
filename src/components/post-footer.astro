@@ -1,8 +1,8 @@
 ---
-const { queryFilters, heading } = Astro.props;
+const { queryFilters, heading, nbPosts } = Astro.props;
 import AllPosts from 'src/components/posts.astro';
 
 ---
 <post-footer class="block mt-lg">
-    <AllPosts queryFilters={queryFilters} heading={heading} />
+    <AllPosts queryFilters={queryFilters} heading={heading} nbPosts={nbPosts} />
 </post-footer>

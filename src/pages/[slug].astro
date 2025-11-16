@@ -7,8 +7,6 @@ import PostFooter from "src/components/post-footer.astro";
 import Tags from "src/components/tags.astro";
 import { getCollection } from "astro:content";
 
-import { sanitizeString } from "public/js/util/util";
-
 export async function getStaticPaths() {
   const posts = await getCollection("posts");
 
@@ -76,7 +74,7 @@ import { Picture } from "astro:assets";
     </article-head>
 
     <Content />
-    <PostFooter queryFilters={queryFilters} heading={heading} />
+    <PostFooter queryFilters={queryFilters} heading={heading} nbPosts={2}/>
   </article>
   <PrintFooter />
 

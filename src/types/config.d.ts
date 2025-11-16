@@ -8,6 +8,6 @@ declare module "@config" {
       CONTACT: boolean;
       EMAIL: string;
       THUMBS: boolean;
-      HOME_NB_POSTS: 
+      HOME_NB_POSTS: number
     };
   }
