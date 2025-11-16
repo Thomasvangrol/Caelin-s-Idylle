@@ -25,7 +25,6 @@ export async function getStaticPaths() {
 const { post } = Astro.props;
 const { slug } = Astro.params;
 const { title, tags, pubDate, description, cover } = post.data;
-console.log("cover", cover)
 const { Content } = await post.render();
 
 import { CONFIG } from "@config";
@@ -42,7 +41,7 @@ import { Picture } from "astro:assets";
 
 ---
 
-<Baselayout title={title} description={description} type="article">
+<Baselayout title={title} description={description} >
   {post.data.cover && (
      <Picture
                                 loading={"lazy"}
@@ -57,11 +56,6 @@ import { Picture } from "astro:assets";
   )}
   
 
-  <print-head>
-    <h1>{CONFIG.TITLE}</h1>
-    <h2>{title}</h2>
-    <h3>{CONFIG.URL}</h3>
-  </print-head>
   <article>
     <article-head>
       <h1>{title}</h1>
