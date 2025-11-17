@@ -6,22 +6,24 @@ content:
     type: collection
     path: src/content/posts
     fields:
-      - name: pubDate
-        label: Publication Date
-        type: date
-        format: yyyy-MM-dd
-      - name: status
-        label: Status
-        type: string
-      - name: author
-        label: Author
-        type: string
       - name: title
         label: Title
         type: string
         required: true
       - name: description
         label: Description
+        type: string
+      - name: pubDate
+        label: Publication Date
+        type: date
+        format: yyyy-MM-dd
+        required: true
+      - name: status
+        label: Status
+        type: string
+        required: true
+      - name: author
+        label: Author
         type: string
       - name: tags
         label: Tags
