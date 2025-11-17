@@ -5,3 +5,7 @@ content:
     label: "Blog Config"
     type: file
     path: blog-config.yaml
+    fields: 
+      - name: TITLE
+        label: Blog title
+        type: string
