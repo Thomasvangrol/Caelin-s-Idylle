@@ -27,23 +27,18 @@ let getUseConfigFromFile = (configFileName) => {
             }
     }
 
-    if (!yamlObject || !yamlObject.CONFIG) {
-        return {configError: `YAML is missing a CONFIG key or is invalid`};
-    }
-
-    if (yamlObject.CONFIG.length === 0) {
-        return {configError: 'YAML CONFIG array is empty'};
+    if (!yamlObject) {
+        return {configError: `YAML is invalid`};
     }
     
-    console.log("yamlObject.CONFIG", yamlObject.CONFIG)
-    let userConfigFromFile = yamlObject.CONFIG;
+    console.log("yamlObject", yamlObject)
+    let userConfigFromFile = yamlObject;
     /*
     yamlObject.CONFIG.forEach(el => {
         Object.assign(userConfigFromFile, el)
     });
     */
 
-    console.log("userConfigFromFile", userConfigFromFile)
     return userConfigFromFile;
 }
  
