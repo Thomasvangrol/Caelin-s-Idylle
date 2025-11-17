@@ -10,3 +10,6 @@ tags:
   - rpgs
   - flowers
 ---
+Rich text
+
+![](src/content/media/Bosna_25.jpg)
