@@ -3,12 +3,14 @@ URL: www.url.com
 DESCRIPTION: This is a blog about so many things and more
 LANG: EN
 AUTHOR: John Doe
-CONTACT: false
-EMAIL: contact@contact.com
+CONTACT: true
+EMAIL: johndoe@contact.com
 POST_COVER: true
 POST_THUMBNAILS: true
 POST_SUGGESTIONS: true
 HOME_NB_POSTS: 6
 MENU:
+  - label: RSS
+    url: /rss.xms
   - label: Google
     url: http://www.google.com

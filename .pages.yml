@@ -5,6 +5,8 @@ content:
     type: collection
     path: src/content/posts
     filename: '{primary}.mdx'
+    view:
+      fields: [title, pubDate]
     fields:
       - name: title
         label: Title
@@ -48,8 +50,42 @@ content:
           - name: alt
             label: ALT
             type: string
-  
 
+  - name: home
+    label: "Home intro text .mdx text"
+    type: file
+    path: src/data/home.mdx
+    fields: 
+      - name: body
+        label: "Home intro text"
+        type: text
+        
+  - name: postFooter
+    label: "Poost Footer text .mdx text"
+    type: file
+    path: src/data/post-footer.mdx
+    fields:
+      - name: body
+        label: Post Footer
+        type: text
+
+  - name: postSuggestionHeading
+    label: "Post Suggestion Heading HTML text"
+    type: file
+    path: src/data/post-suggestion-heading.mdx
+    fields:
+      - name: postSuggestionHeading
+        label: Post Suggestion Heading
+        type: string
+
+  - name: footer
+    label: "Footer text .mdx text"
+    type: file
+    path: src/data/footer.mdx
+    fields:
+      - name: body
+        label: Footer
+        type: text
       
   - name: CONFIG
     label: "Blog Config"
