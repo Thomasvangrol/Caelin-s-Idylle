@@ -60,7 +60,14 @@ content:
         label: "Home intro text"
         type: text
         
-
+  - name: postFooter
+    label: "Poost Footer text"
+    type: file
+    path: src/data/post-footer.mdx
+    fields:
+      - name: body
+        label: Post Footer
+        type: text
 
   - name: footer
     label: "Footer text"
