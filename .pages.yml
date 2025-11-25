@@ -81,7 +81,7 @@ content:
         type: string
 
   - name: footer
-    label: "Footer text .mdx text"
+    label: "Blog Footer text .mdx text"
     type: file
     path: src/data/footer.mdx
     fields:
