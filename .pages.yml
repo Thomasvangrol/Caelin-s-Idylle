@@ -1,10 +1,10 @@
 media:
-  name: OG_image
-  input: src/content/media
-  output: /
-media:
-  input: src/content/media
-  output: ../media
+  - name: OG_image
+    input: src/content/media
+    output: /
+  - name: posts
+    input: src/content/media
+    output: ../media
 content:
   - name: posts
     label: Posts
@@ -50,6 +50,8 @@ content:
           - name: src
             label: Cover image
             type: image
+            options: 
+              media: posts
           - name: title
             label: Title
             type: string
