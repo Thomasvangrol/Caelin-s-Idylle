@@ -11,7 +11,12 @@ import { remarkExtendImage, remarkExtendBlockquote } from "./src/js/plugins/rema
 
 const isDev = process.argv.includes("dev");
 
-const site = process.env.SITE_URL || CONFIG.URL || (isDev ? "http://localhost:4321" : undefined);
+let site = process.env.SITE_URL || CONFIG.URL || (isDev ? "http://localhost:4321" : undefined);
+
+if (!site) {
+  console.warn("RSS Warning: No 'site' configured. Defaulting to localhost.");
+  site = "http://localhost:4321"; 
+}
 const base = process.env.BASE_URL || CONFIG.BASE || '/'
 
 export default defineConfig({

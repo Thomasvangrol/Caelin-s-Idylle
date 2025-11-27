@@ -3,19 +3,27 @@ import { getCollection } from 'astro:content';
 
 import { CONFIG } from "@config";
 
-const createSanitizer = (base) => (url) => {
-    const combined = `${base}/${url}`;
-    
-    // Regex fies double // without affecting protocol
-    return combined.replaceAll(/(?<!:)\/+/gm, '/');
-};
-
-const site = import.meta.env.SITE;
-
-const sanitizeUrl = createSanitizer(site);
-
 export async function GET(context) {
     const blog = await getCollection('posts');
+    let site = context.site?.toString() || import.meta.env.SITE;
+
+    if (!site) {
+        console.warn("RSS Warning: No 'site' configured. Defaulting to localhost.");
+        site = "http://localhost:4321"; 
+    }
+
+    const base = import.meta.env.BASE_URL || '/';
+
+    // Remove trailing slash from site
+    const cleanSite = site.replace(/\/$/, '');
+    // Remove leading slash from base
+    const cleanBase = base.replace(/^\//, '');
+    // Remove trailing slash from base (to ensure consistency)
+    const cleanerBase = cleanBase.replace(/\/$/, '');
+
+    // Result: https://user.github.io/repo-name
+    const fullUrl = `${cleanSite}/${cleanerBase}`;
+
     return rss({
         // `<title>` field in output xml
         title: CONFIG.TITLE,
@@ -23,7 +31,7 @@ export async function GET(context) {
         description: CONFIG.DESCRIPTION,
         // Pull in your project "site" from the endpoint context
         // https://docs.astro.build/en/reference/api-reference/#site
-        site: sanitizeUrl(import.meta.env.BASE_URL),
+        site: fullUrl,
         // Array of `<item>`s in output xml
         // See "Generating items" section for examples using content collections and glob imports
         items: blog.map((post) => ({
