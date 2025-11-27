@@ -127,6 +127,9 @@ content:
       - name: URL
         label: Blog url
         type: string
+      - name: BASE
+        label: Blog base folder (leave empty if none)
+        type: string
       - name: DESCRIPTION
         label: Blog description
         type: string
