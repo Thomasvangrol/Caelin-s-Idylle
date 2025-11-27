@@ -9,8 +9,9 @@ const CONFIG = rawConfig;
 
 import { remarkExtendImage, remarkExtendBlockquote } from "./src/js/plugins/remark-plugins";
 
+const isDev = process.argv.includes("dev");
 
-const site = process.env.SITE_URL || CONFIG.URL;
+const site = process.env.SITE_URL || CONFIG.URL || (isDev ? "http://localhost:4321" : undefined);
 const base = process.env.BASE_URL || CONFIG.BASE || '/'
 
 export default defineConfig({
