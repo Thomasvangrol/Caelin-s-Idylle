@@ -76,7 +76,7 @@ content:
           hidden: true
           default: '../layouts/pagelayout.astro'
   - name: home
-    label: "Home intro text .mdx text"
+    label: "Home intro, markdown text or HTML"
     type: file
     path: src/data/home.mdx
     fields: 
@@ -85,8 +85,7 @@ content:
         type: text
         
   - name: postFooter
-    label: "Post Footer"
-    description: "Markdown text or html"
+    label: "Post Footer, markdown text or HTML"
     type: file
     path: src/data/post-footer.mdx
     fields:
@@ -104,7 +103,7 @@ content:
         type: string
 
   - name: footer
-    label: "Blog Footer text .mdx text"
+    label: "Blog Footer, markdown text or HTML"
     type: file
     path: src/data/footer.mdx
     fields:
