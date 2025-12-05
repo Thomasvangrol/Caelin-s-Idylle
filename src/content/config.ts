@@ -6,7 +6,6 @@ import { defineCollection, z } from 'astro:content';
 // import { glob } from 'astro/loaders';
 // We don’t need to use the glob here, as we are importing only md/mdx files, which are the default astro content
 
-
 // 3. Define your collection(s)
 
 const posts = defineCollection({
