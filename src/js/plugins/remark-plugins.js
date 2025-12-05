@@ -48,7 +48,7 @@ function remarkExtendBlockquote () {
 function remarkExtendImage () {
         return function (tree, file) {
 
-           /* Checks if the mdx file has an import statement for the Astro Picture component */
+        /* Checks if the mdx file has an import statement for the Astro Picture component */
         const alreadyHasImport = tree.children.some(
           (n) => n.type === 'mdxjsEsm' && n.value.includes("Picture")
         );
@@ -71,11 +71,11 @@ function remarkExtendImage () {
             if (node.children[0].type == 'image') {
               const imageNode = node.children[0];
               const imageAlt = imageNode.alt || '';
-              const imageUrl = imageNode.url || '';
               
               let newNode;
   
-              if (!imageNode.url || !imageNode.url.startsWith('.')) {
+              // Check if imageNode.url exists
+              if (!imageNode.url) {
                 newNode={};
                 parent.children[index] = newNode;
                 return
@@ -83,10 +83,23 @@ function remarkExtendImage () {
   
               // Resolve the absolute path of the image
               const absoluteImagePath = path.resolve(
-                path.dirname(file.path), // Path of the .mdx file
-                imageNode.url             // Relative path of the image
+                // path.dirname(file.path), // Path of the .mdx file
+                `src/media/${imageNode.url}`            // Relative path of the image
               );
+                  
+              // See if the file exists
+              if (!fs.existsSync(absoluteImagePath)) {
+                // 4. If not, log a warning and skip transformation
+                console.warn(
+                  `[remark-astro-images] Image not found at ${absoluteImagePath}`
+                );
+                newNode={};
+                parent.children[index] = newNode;
+                return; // Leave the node as a broken <img>
+              }
                 
+              const imageUrl = imageNode.url || '';
+
                 newNode = {
                         type: 'mdxJsxFlowElement',
                         name: 'figure',
@@ -97,10 +110,10 @@ function remarkExtendImage () {
                             name: 'Picture',
                             attributes: [{type: 'mdxJsxAttribute', name: 'src', value: {
                                 type: 'mdxJsxAttributeValueExpression',
-                                value: `import('${imageUrl}')`,
+                                value: `import('@media/${imageUrl}')`,
                                 data: {
-                                    estree: parseExpression(`import('${imageUrl}')`)
-                                  }
+                                  estree: parseExpression(`import("@media/${imageUrl}")`)
+                                }
                             }},
                             {type: 'mdxJsxAttribute', name: 'alt', value: imageAlt},
                             {type: 'mdxJsxAttribute', name: 'formats', value: {
@@ -138,17 +151,6 @@ function remarkExtendImage () {
                 )
               }
     
-    
-              // 3. THE SAFETY CHECK: See if the file exists
-              if (!fs.existsSync(absoluteImagePath)) {
-                // 4. If not, log a warning and skip transformation
-                console.warn(
-                  `[remark-astro-images] Image not found at ${node.url}`
-                );
-                newNode={};
-                parent.children[index] = newNode;
-                return; // Leave the node as a broken <img>
-              }
               parent.children[index] = newNode;
 
 

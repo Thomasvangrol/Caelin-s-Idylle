@@ -35,7 +35,8 @@ export default defineConfig({
   vite: {
     resolve: {
       alias: {
-        "@config": "src/js/load-config.js"
+        "@config": "src/js/load-config.js",
+        "@media": "/src/media"
       }
     }
   }
