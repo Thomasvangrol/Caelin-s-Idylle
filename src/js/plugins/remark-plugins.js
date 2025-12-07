@@ -128,8 +128,6 @@ function remarkExtendImage () {
                 
               const newImageNode = generateImageNode(imageNodeType);
 
-              console.log('newImageNode', newImageNode)
-
                 newNode = {
                         type: 'mdxJsxFlowElement',
                         name: 'figure',
