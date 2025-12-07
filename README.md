@@ -124,7 +124,7 @@ author: Author name
 tags:
   - tag
 cover:
-  src: ../../media/obr_large.png - relative path 
+  src: ../../media/filename.ext - relative path 
   title: string
   alt: string
 ---
