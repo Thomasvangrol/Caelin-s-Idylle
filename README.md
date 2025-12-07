@@ -124,7 +124,7 @@ author: Author name
 tags:
   - tag
 cover:
-  src: filenam, for example imagename.ext - subfolders accepted subfolder/imagename.ext
+  src: ../../media/obr_large.png - relative path 
   title: string
   alt: string
 ---
