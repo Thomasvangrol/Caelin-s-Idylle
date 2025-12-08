@@ -94,7 +94,7 @@ Mdx posts and frontmatter accept local and remote images.
 
 Local images must be placed in `src/media`.
 
-In .mdx files (like posts) you don't need to specify the full path for images, just the filename, OBR figures out the image path.
+In .mdx files and the posts frontmatter you don't need to specify the full path for images, just the filename, OBR figures out the image path.
 
 Example: `![ALT](filename.ext TITLE)`
 
@@ -116,8 +116,6 @@ Some text
 ![ALT](filename.ext TITLE)
 Some text
 ```
-
-Cover images path in posts (in frontmatter yaml) must be relative. If your cover image is in `src/media` that would be `../../media/image.ext`
 
 Partial project structure:
 
