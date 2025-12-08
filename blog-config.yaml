@@ -22,5 +22,6 @@ BLOG_COVER:
   src: obr_large.png
   alt: Open Blog Revolution
 BANNER:
-  src: ../media/obr_banner.png
+  src: obr_banner.png
   alt: Open Blog Revolution Banner
+MEDIA_FOLDER: /src/media

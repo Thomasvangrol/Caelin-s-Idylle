@@ -3,13 +3,28 @@ import { getImage, Picture } from "astro:assets";
 
 const { src, alt, className } = Astro.props;
 
+console.log("src file", src)
+
+import { CONFIG } from "@config";
+
+const mediaFolder = '../media/';
+
+const images = import.meta.glob('../media/*.{png,jpg,jpeg,webp,svg}', {
+  eager: true,
+});
+
+const imagesArray = Object.entries(images);
+
+const image = src ? imagesArray.filter(([key, val]) => key === `${mediaFolder}${src}`)[0][1].default : null;
+
+console.log('image', image)
 ---
 
 { src &&
 <Picture
 class={className}
 loading={"lazy"}
-src={src}
+src={image}
 formats={["avif", "webp"]}
 alt={alt || ''}
 widths={[240, 540, 720, 1280]}
