@@ -25,7 +25,7 @@ MENU: # Main menu
   - label: Editor # Example menu label
     url: editor # Example menu url
 BLOG_COVER:  # Blog cover for social networks previews
-  src: Nature of things.jfif # Cover url (must be placed in the folder src/public)
+  src: Nature of things.jpg # Cover url (must be placed in the folder src/public)
   alt: Nature of Things # Cover image alt text, mandatory
 BANNER: # Blog banner, appears above the menu if any
   src:  # Banner url (must be placed in the folder src/media)
