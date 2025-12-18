@@ -28,8 +28,8 @@ BLOG_COVER:  # Blog cover for social networks previews
   src: Nature of things.jfif # Cover url (must be placed in the folder src/public)
   alt: Nature of Things # Cover image alt text, mandatory
 BANNER: # Blog banner, appears above the menu if any
-  src: obr_banner.png  # Banner url (must be placed in the folder src/media)
-  alt: Open Blog Revolution Banner # Banner image alt text, mandatory
+  src:  # Banner url (must be placed in the folder src/media)
+  alt:  # Banner image alt text, mandatory
 EDITOR:
   GITHUBUSER: Thomasvangrol # Github user name
   GITHUBREPO: Thomasvangrol # Github repo
